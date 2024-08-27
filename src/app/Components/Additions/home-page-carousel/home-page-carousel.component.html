@@ -1,0 +1,19 @@
+<div class="mt-4">
+    @if(categoriesData === null) {
+        <div class="flex flex-wrap justify-center h-screen items-center">
+            <span class="loader"></span>
+        </div>
+    }
+    @else {
+        <app-banner-carousel></app-banner-carousel>
+        <h2 class="mb-1 text-lg">Shop popular <strong>Categories</strong></h2>
+        <owl-carousel-o [options]="carouselOptions">
+            @for(category of categoriesData.data; track $index) {
+                <ng-template carouselSlide [id]="category._id">
+                    <img class="carousel-img" [src]="category.image" [alt]="category.name" [title]="category.name">
+                    <h3 class="mt-2">{{category.name}}</h3>
+                </ng-template>
+            }
+        </owl-carousel-o>
+    }
+</div>

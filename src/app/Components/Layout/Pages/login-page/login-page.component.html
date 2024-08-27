@@ -1,0 +1,27 @@
+<form class="w-9/12 mx-auto mt-8" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <h3 class="mb-4 text-xl">Login:</h3>
+
+    <label for="emailInputLogin">Email:</label>
+    <input class="w-full mb-4 p-1 rounded-md border-gray-300 focus:border-green-500 focus:ring-green-500" type="email" id="emailInputLogin" formControlName="email">
+
+    <label for="passwordInputLogin">Password:</label>
+    <input class="w-full mb-4 p-1 rounded-md border-gray-300 focus:border-green-500 focus:ring-green-500" type="password" id="passwordInputLogin" formControlName="password">
+
+    @if(loginFailed) {
+        <div class="bg-red-600 text-white rounded-md border border-solid border-red-400 ring-red-400 p-3">
+            Email or password is incorrect.
+        </div>
+    }
+
+    <div class="flex justify-end">
+        <button id="signoutButton" type="button" class="opacity-70 me-4 md:me-2 cursor-pointer hover:text-green-500 transition-all" routerLink="/forgot-password-page">Forgot Password?</button>
+        <button class="py-2 px-4 mt-2 bg-green-500 hover:bg-green-600 disabled:bg-[#70CA79] disabled:cursor-not-allowed text-white rounded-md" [disabled]="loginForm.invalid">
+            @if(isLoading) {
+                <span><i class="fa fa-spin fa-spinner"></i></span>
+            }
+            @else {
+                <span>Login</span>
+            }
+        </button>
+    </div>
+</form>

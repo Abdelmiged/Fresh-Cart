@@ -1,0 +1,59 @@
+<form class="w-9/12 mx-auto mt-8" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <h3 class="mb-4 text-xl">Register Now:</h3>
+
+    <label for="nameInput">Name:</label>
+    <input class="w-full mb-4 p-1 rounded-md border-gray-300 focus:border-green-500 focus:ring-green-500" type="text" id="nameInput" formControlName="name">
+    @if(registerForm.get('name')!.invalid && registerForm.get('name')!.touched) {
+        <div class="bg-red-600 text-white rounded-md border border-solid border-red-400 ring-red-400 p-3">Name Field is requied.</div>
+    }
+
+    <label for="emailInput">Email:</label>
+    <input class="w-full mb-4 p-1 rounded-md border-gray-300 focus:border-green-500 focus:ring-green-500" type="email" id="emailInput" formControlName="email">
+    @if(registerForm.get('email')!.invalid && registerForm.get('email')!.touched) {
+        <div class="bg-red-600 text-white rounded-md border border-solid border-red-400 ring-red-400 p-3">
+            Email Field is required / Email Format not correct.
+        </div>
+    }
+    
+    <label for="phoneInput">Phone:</label>
+    <input class="w-full mb-4 p-1 rounded-md border-gray-300 focus:border-green-500 focus:ring-green-500" type="tel" id="phoneInput" formControlName="phone">
+    @if(registerForm.get('phone')!.invalid && registerForm.get('phone')!.touched) {
+        <div class="bg-red-600 text-white rounded-md border border-solid border-red-400 ring-red-400 p-3">
+            Phone Field is required / Please enter a valid egyption phone number.
+        </div>
+    }
+
+    <label for="passwordInput">Password:</label>
+    <input class="w-full mb-4 p-1 rounded-md border-gray-300 focus:border-green-500 focus:ring-green-500" type="password" id="passwordInput" formControlName="password">
+    @if(registerForm.get('password')!.invalid && registerForm.get('password')!.touched) {
+        <div class="bg-red-600 text-white rounded-md border border-solid border-red-400 ring-red-400 p-3">
+            Password Field is required / Minimum Length is 8 characters.
+        </div>
+    }
+
+    <label for="repasswordInput">Re-enter Password:</label>
+    <input class="w-full mb-4 p-1 rounded-md border-gray-300 focus:border-green-500 focus:ring-green-500" type="password" id="repasswordInput" formControlName="rePassword">
+    @if(registerForm.get('rePassword')!.invalid && registerForm.get('rePassword')!.touched) {
+        <div class="bg-red-600 text-white rounded-md border border-solid border-red-400 ring-red-400 p-3">
+            Re-enter your password / Passwords don't match.
+        </div>
+    }
+
+
+    @if(registerFailed) {
+        <div class="bg-red-600 text-white rounded-md border border-solid border-red-400 ring-red-400 p-3">
+            Account already exists.
+        </div>
+    }
+
+    <div class="flex justify-end">
+        <button class="py-2 mt-2 px-4 bg-green-500 hover:bg-green-600 disabled:bg-[#70CA79] disabled:cursor-not-allowed text-white rounded-md" [disabled]="registerForm.invalid">
+            @if(isLoading) {
+                <span><i class="fa fa-spin fa-spinner"></i></span>
+            }
+            @else {
+                <span>Register</span>
+            }
+        </button>
+    </div>
+</form>

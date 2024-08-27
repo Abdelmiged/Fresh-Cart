@@ -1,0 +1,23 @@
+<app-home-page-carousel></app-home-page-carousel>
+
+<div class="flex flex-wrap mt-4 items-stretch">
+    @defer(on viewport) {
+        @for(product of productsData!.data; track $index) {
+            <div class="w-full sm:w-6/12 md:w-3/12 lg:w-2/12">
+                <div class="h-full p-4 pb-10 rounded-sm border-2 border-transparent transition-all hover:border-green-500 hover:ring-green-500 relative group overflow-hidden">
+                    <img class="w-full" [src]="product.images[0]" [alt]="product.title">
+                    <h3 class="text-green-500">{{product.category.name}}</h3>
+                    <h3 class="text-lg">{{product.title.split(" ").slice(0, 2).join(" ")}}</h3>
+                    <div class="mt-4 flex justify-between">
+                        <span>{{product.price}} EGP</span>
+                        <span><i class="fa-solid fa-star" style="color: #FFD43B;"></i>{{product.ratingsAverage}}</span>
+                    </div>
+                    <button class="w-full text-white p-1 mt-6 bg-[#08AC0B] cursor-pointer hover:bg-[#197717] absolute -bottom-full opacity-0 start-1/2 -translate-x-1/2 group-hover:opacity-100 group-hover:bottom-0 transition-all duration-200">Add To Cart <i class="fa-solid fa-cart-shopping" style="color: #ffffff;"></i></button>
+                </div>
+            </div>
+        }
+    }
+    @placeholder {
+        <span class="loader"></span>
+    }
+</div>
