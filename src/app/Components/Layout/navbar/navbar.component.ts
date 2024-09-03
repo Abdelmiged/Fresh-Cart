@@ -13,10 +13,10 @@ import { isPlatformBrowser } from '@angular/common';
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss'
 })
-export class NavbarComponent implements OnInit,AfterViewInit {
+export class NavbarComponent implements OnInit {
   platformId:Object = inject(PLATFORM_ID);
   constructor(private _FlowbiteService:FlowbiteService, protected _Authentication:AuthenticationService, private _Router:Router, protected _CartService:CartService, protected _Wishlist:WishlistService) {}
-  tooltip!:HTMLElement;
+  
 
   ngOnInit(): void {
       this._FlowbiteService.loadFlowbite(flowbite => {})
@@ -28,11 +28,5 @@ export class NavbarComponent implements OnInit,AfterViewInit {
           this._Wishlist.wishlistItemsCount.next((res?.count === 0) ? 0 : res!.count);
         })
       }
-  }
-
-  ngAfterViewInit(): void {
-    if(isPlatformBrowser(this.platformId)) {
-      this.tooltip = document.querySelector('#tooltip-top') as HTMLElement;
-    }
   }
 }
