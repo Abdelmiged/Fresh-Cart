@@ -1,1 +1,31 @@
-<p>categories-page works!</p>
+@if(categoriesData !== null) {
+    <div class="flex flex-wrap mt-6">
+        @for(category of categoriesData.data; track category._id) {
+            <div class="w-full md:w-4/12 p-4">
+                <div class="flex flex-col justify-center items-center border rounded-md hover:shadow-md hover:shadow-green-400 transition-all pb-6 cursor-pointer" (click)="getSubcategoriesOnCategory(category._id, category.name)">
+                    <div class="w-full">
+                        <img class="w-full h-[300px] object-cover object-center" [src]="category.image" [alt]="category.name">
+                    </div>
+                    <h4 class="text-2xl text-green-500 font-semibold mt-6 text-center">{{category.name}}</h4>
+                </div>
+            </div>
+        }
+    </div>
+}
+
+@if(categoriesData !== null && categoriesData.metadata.numberOfPages !== 0) {
+    <app-pagination [pages]="categoriesData.metadata.numberOfPages" [currentPage]="categoriesData.metadata.currentPage" (targetPage)="getCategories($event)"></app-pagination>
+}
+
+@if(subCategoriesData !== null) {
+    <h2 class="text-4xl text-green-500 font-semibold mt-6 text-center">{{mainCategory}} Subcategories</h2>
+    <div class="flex flex-wrap mt-6">
+        @for(category of subCategoriesData; track category._id) {
+            <div class="w-full md:w-4/12 p-4">
+                <div class="flex flex-col justify-center items-center border rounded-md hover:shadow-md hover:shadow-green-400 transition-all pb-6 cursor-pointer">
+                    <h4 class="text-2xl font-semibold mt-6 text-center">{{category.name}}</h4>
+                </div>
+            </div>
+        }
+    </div>
+}

@@ -1,7 +1,7 @@
 import { inject, PLATFORM_ID } from '@angular/core';
 import { CanActivateFn, Router } from '@angular/router';
 import { AuthenticationService } from '../../Services/Authentication/authentication.service';
-import { isPlatformBrowser, isPlatformServer } from '@angular/common';
+import { isPlatformServer } from '@angular/common';
 
 export const authenticationGuard: CanActivateFn = (route, state) => {
   let _Authentication:AuthenticationService = inject(AuthenticationService);

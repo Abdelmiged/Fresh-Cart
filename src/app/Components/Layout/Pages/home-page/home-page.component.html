@@ -1,23 +1,36 @@
 <app-home-page-carousel></app-home-page-carousel>
-
+@if(productsData) {
+    <input class="w-1/2 block mx-auto p-1 my-4 rounded-md border-gray-300 focus:border-green-500 focus:ring-green-500" type="text" placeholder="Search by Name..." [(ngModel)]="searchWord">
+}
 <div class="flex flex-wrap mt-4 items-stretch">
-    @defer(on viewport) {
-        @for(product of productsData!.data; track $index) {
-            <div class="w-full sm:w-6/12 md:w-3/12 lg:w-2/12">
-                <div class="h-full p-4 pb-10 rounded-sm border-2 border-transparent transition-all hover:border-green-500 hover:ring-green-500 relative group overflow-hidden">
-                    <img class="w-full" [src]="product.images[0]" [alt]="product.title">
-                    <h3 class="text-green-500">{{product.category.name}}</h3>
-                    <h3 class="text-lg">{{product.title.split(" ").slice(0, 2).join(" ")}}</h3>
-                    <div class="mt-4 flex justify-between">
-                        <span>{{product.price}} EGP</span>
-                        <span><i class="fa-solid fa-star" style="color: #FFD43B;"></i>{{product.ratingsAverage}}</span>
+    @if(productsData !== null) {
+        @defer(on viewport) {
+            @for(product of productsData!.data |search: searchWord; track product._id) {
+                <div class="w-full sm:w-6/12 md:w-3/12 lg:w-2/12 cursor-pointer">
+                    <div class="h-full p-4 pb-10 rounded-sm border-2 border-transparent transition-all hover:border-green-500 hover:shadow-green-500 hover:shadow-md relative group overflow-hidden">
+                        <div [routerLink]="['/product-details-page', product._id]">
+                            <img class="w-full" [src]="product.imageCover" [alt]="product.title">
+                            <h3 class="text-green-500">{{product.category.name}}</h3>
+                            <h3 class="text-lg">{{product.title.split(" ").slice(0, 2).join(" ")}}</h3>
+                            <div class="mt-4 flex justify-between">
+                                <span>EGP {{product.price}}</span>
+                                <span><i class="fa-solid fa-star" style="color: #FFD43B;"></i>{{product.ratingsAverage}}</span>
+                            </div>
+                        </div>
+                        <button class="w-full text-white p-1 mt-6 bg-[#08AC0B] cursor-pointer hover:bg-[#197717] absolute -bottom-full opacity-0 start-1/2 -translate-x-1/2 group-hover:opacity-100 group-hover:bottom-0 transition-all" (click)="this._Cart.frontAddProductToCart(product._id)">Add To Cart <i class="fa-solid fa-cart-shopping" style="color: #ffffff;"></i></button>
+                        <button class="absolute -end-full transition-all group-hover:end-0 top-0 translate-y-1/2 -translate-x-1/4 bg-[#ffe4e4] p-2 rounded-md shadow-xl hover:bg-[#cdb8b8]" (click)="this._Wishlist.frontAddProductToWishlist($event, product._id)">
+                            <i class="heart-filled hidden fa-solid fa-heart text-red-700 text-4xl sm:text-2xl md:text-base"></i>
+                            <i class="heart-hollow  inline-block fa-regular fa-heart text-black text-4xl sm:text-2xl md:text-base"></i>
+                        </button>
                     </div>
-                    <button class="w-full text-white p-1 mt-6 bg-[#08AC0B] cursor-pointer hover:bg-[#197717] absolute -bottom-full opacity-0 start-1/2 -translate-x-1/2 group-hover:opacity-100 group-hover:bottom-0 transition-all duration-200">Add To Cart <i class="fa-solid fa-cart-shopping" style="color: #ffffff;"></i></button>
                 </div>
-            </div>
+            }
+        }
+        @placeholder {
+            <div></div>
         }
     }
-    @placeholder {
-        <span class="loader"></span>
-    }
 </div>
+@if(productsData !== null && productsData.metadata.numberOfPages !== 0) {
+    <app-pagination [pages]="productsData.metadata.numberOfPages" [currentPage]="productsData.metadata.currentPage" (targetPage)="getProducts($event)"></app-pagination>
+}

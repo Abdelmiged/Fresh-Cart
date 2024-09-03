@@ -1,6 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url("https://fonts.googleapis.com/css2?family=Encode+Sans+Expanded:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+body {
+    font-family: "Encode Sans Expanded", sans-serif;
+}
 
 .loader {
     width: 48px;
@@ -19,5 +24,45 @@
     }
     100% {
         transform: rotate(360deg);
+    }
+}
+
+html {
+    overflow-x: hidden;
+}
+
+.page-number {
+    color: black;
+    width: 3rem;
+    aspect-ratio: 1 / 1;
+    display: grid;
+    place-content: center;
+    font-weight: bold;
+    cursor: pointer;
+    border: 1px solid green;
+    transition: all .1s ease-in-out;
+    border-radius: .2rem;
+    margin: 0 .0625rem 0;
+
+    &:hover {
+        background-color: green;
+        color: white;
+    }
+}
+
+.dots {
+    align-self: flex-end;
+    margin: 0 .1875rem 0;
+    font-weight: bold;
+}
+
+.clicked {
+    background-color: green;
+    color: white !important;
+}
+
+@media(max-width: 640px) {
+    .page-number {
+        width: 2rem;
     }
 }

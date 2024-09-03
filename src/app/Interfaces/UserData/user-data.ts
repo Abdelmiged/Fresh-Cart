@@ -5,3 +5,9 @@ export interface UserData {
     iat: number
     exp: number
 }
+
+export interface ShippingAddress {
+    details: string
+    phone: string
+    city: string
+}
