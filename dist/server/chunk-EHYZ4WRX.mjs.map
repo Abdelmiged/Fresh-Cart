@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["src/app/Pipes/Search/search.pipe.ts"],
-  "sourcesContent": ["import { Pipe, PipeTransform } from '@angular/core';\r\nimport { Product } from '../../Interfaces/Products/products';\r\n\r\n@Pipe({\r\n  name: 'search',\r\n  standalone: true\r\n})\r\nexport class SearchPipe implements PipeTransform {\r\n\r\n  transform(productsList:Product[], searchWord:string): Product[] {\r\n    return productsList.filter((item) => item.title.split(\" \").slice(0, 2).join(\" \").toLowerCase().includes(searchWord.toLowerCase()));\r\n  }\r\n\r\n}\r\n"],
-  "mappings": ";;;;;;;AAOM,IAAO,cAAP,MAAO,YAAU;EAErB,UAAU,cAAwB,YAAiB;AACjD,WAAO,aAAa,OAAO,CAAC,SAAS,KAAK,MAAM,MAAM,GAAG,EAAE,MAAM,GAAG,CAAC,EAAE,KAAK,GAAG,EAAE,YAAW,EAAG,SAAS,WAAW,YAAW,CAAE,CAAC;EACnI;;;mBAJW,aAAU;AAAA;wFAAV,aAAU,MAAA,MAAA,YAAA,KAAA,CAAA;AAAjB,IAAO,aAAP;",
-  "names": []
-}

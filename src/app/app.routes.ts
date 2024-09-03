@@ -32,6 +32,8 @@ export const routes: Routes = [
     {path: "forgot-password-page", component: ForgotPasswordPageComponent, title: "Forgot Password"},
     {path: "verify-password-page", component: VerifyPasswordPageComponent, canActivate: [forgotPasswordGuard], title: "Verify Password"},
     {path: "reset-password-page", component: ResetPasswordPageComponent, canActivate: [verifyPasswordGuard], title: "Reset Password"},
+    {path: "allorders", redirectTo:"home-page", pathMatch: "full"},
+    {path: "cart", redirectTo:"cart-page", pathMatch: "full"},
     {path: "", redirectTo: "home-page", pathMatch: "full"},
     {path: "**", component: NotFoundComponent, title: "Not Found"}
 ];

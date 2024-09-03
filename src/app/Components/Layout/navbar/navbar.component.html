@@ -46,10 +46,10 @@
                 </div>
                 <ul class="flex mt-2 px-3 md:px-0 md:mt-0 items-center space-x-4 md:space-x-2 rtl:space-x-reverse">
                     <button data-popover-target="popover-user-profile" type="button" data-popover-trigger="click"
-                    class="mb-2 md:mb-0 text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-3 py-2 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Social</button>
+                        class="mb-2 md:mb-0 text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-3 py-2 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Social</button>
 
                     <div data-popover id="popover-user-profile" role="tooltip"
-                    class="absolute z-10 invisible px-3 py-2 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700 flex gap-4">
+                        class="absolute z-10 invisible px-3 py-2 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700 flex gap-4">
                         <li class="hover:text-purple-600">
                             <a href="https://www.instagram.com" target="_blank"><i
                                     class="fa-brands fa-instagram"></i></a>
@@ -71,31 +71,6 @@
                         </li>
                         <div data-popper-arrow></div>
                     </div>
-                    <!-- <button data-popover-target="popover-user-profile" type="button"
-                        class="mb-2 md:mb-0 text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-3 py-2 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Social</button>
-                    <div data-popover-id="popover-user-profile" role="tooltip"
-                        class="absolute z-10 invisible px-3 py-2 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700 flex gap-4">
-                        <li class="hover:text-purple-600">
-                            <a href="https://www.instagram.com" target="_blank"><i
-                                    class="fa-brands fa-instagram"></i></a>
-                        </li>
-                        <li class="hover:text-blue-600">
-                            <a href="https://www.facebook.com" target="_blank"><i class="fa-brands fa-facebook"></i></a>
-                        </li>
-                        <li class="hover:text-gray-500">
-                            <a href="https://www.tiktok.com" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
-                        </li>
-                        <li class="hover:text-blue-400">
-                            <a href="https://www.twitter.com" target="_blank"><i class="fa-brands fa-twitter"></i></a>
-                        </li>
-                        <li class="hover:text-blue-700">
-                            <a href="https://www.linkedin.com" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
-                        </li>
-                        <li class="hover:text-red-500">
-                            <a href="https://www.youtube.com" target="_blank"><i class="fa-brands fa-youtube"></i></a>
-                        </li>
-                        <div class="tooltip-arrow" data-popper-arrow></div>
-                    </div> -->
                     <li class="!ms-0">
                         @if(_Authentication.userData.getValue() === null) {
                         <button id="loginButton"

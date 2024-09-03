@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["src/app/Components/Additions/home-page-carousel/home-page-carousel.component.scss"],
-  "sourcesContent": [".carousel-img {\r\n    height: 25rem;\r\n    object-fit: cover;\r\n}\r\n\r\n@media (min-width: 1280px) {\r\n    .carousel-img {\r\n        height: 16rem;\r\n    }\r\n}\r\n\r\n@media (min-width: 1024px) and (max-width: 1279px) {\r\n    .carousel-img {\r\n        height: 10rem;\r\n    }\r\n}"],
-  "mappings": ";AAAA,CAAA;AACI,UAAA;AACA,cAAA;;AAGJ,OAAA,CAAA,SAAA,EAAA;AACI,GANJ;AAOQ,YAAA;;;AAIR,OAAA,CAAA,SAAA,EAAA,QAAA,IAAA,CAAA,SAAA,EAAA;AACI,GAZJ;AAaQ,YAAA;;;",
-  "names": []
-}
